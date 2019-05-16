@@ -8,3 +8,17 @@ Factory Pattern
 - Factory is responsible for creating obj, not the client.
 - Multiple clients call the same factory, one place for changes
 - Easier to test, easy to mock and isolate.
+
+```php
+interface PizzaFactoryContract
+{
+  public function make(array $toppings = []): Pizza;
+}
+class PizzaFactory implements PizzaFactoryContract
+{
+  public function make(array $toppings=[])
+  {
+    return new Pizza($toppings);
+  }
+}
+```
