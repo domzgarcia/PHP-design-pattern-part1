@@ -44,7 +44,7 @@ Builds complex obj step by step, it can return different obj based on the given 
 - Has functionality to decide which obj should be returned.
 
 ```php
-interface PizzaBuilderInterface
+interface PizzaBuilderInterface // adhere to this contract
 {
   public function prepare();
   public function applyToppings();
@@ -60,6 +60,32 @@ class PizzaBuilder
     return $pizza;
   }
 }
+// # So building a Margarita Pizza
+class MargaritaBuilder implements PizzaBuilderInterface
+{
+  protected $pizza;
+  public function prepare(): Pizza
+  {
+    $this->pizza = new Pizza();
+    
+    return $this->pizza();
+  }
+  public function applyToppings(): Pizza
+  {
+    $this->pizza->setToppings(['cheese','tomato']);
+    
+    return $this->pizza();
+  }
+  public function bake(): Pizza
+  {
+    $this->pizza->setBakingTemperature(180);
+    $this->pizza->setBakingMinutes(10);
+    
+    return $this->pizza();
+  }
+}
+
 ```
+
 
 
