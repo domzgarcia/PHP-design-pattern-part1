@@ -61,7 +61,7 @@ class PizzaBuilder
   }
 }
 // # So building a Margarita Pizza
-class MargaritaBuilder implements PizzaBuilderInterface
+class MargarithaBuilder implements PizzaBuilderInterface
 {
   protected $pizza;
   public function prepare(): Pizza
@@ -84,6 +84,12 @@ class MargaritaBuilder implements PizzaBuilderInterface
     return $this->pizza();
   }
 }
+
+// # Create a PizzaBuilder
+$pizzaBuilder = new PizzaBuilder;
+
+// # Create pizza using Builder which returns Pizza instance
+$pizza = $pizzaBuilder->make(new MargarithaBuilder());
 
 ```
 
