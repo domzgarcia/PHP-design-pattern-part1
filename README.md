@@ -21,6 +21,8 @@ class PizzaFactory implements PizzaFactoryContract
     return new Pizza($toppings);
   }
 }
+// # assemble pizza together
+
 ```
 In laravel
 ```php
@@ -31,6 +33,32 @@ function view($view = null, $data = [], $mergeData = [])
     return $factory;
   }
   return $factory->make($view, $data, $mergeData);
+}
+```
+
+Builder Pattern
+---
+Builds complex obj step by step, it can return different obj based on the given data. Extension of Factory pattern.
+- Decouples code.
+- Focuses on building complex obj and return them.
+- Has functionality to decide which obj should be returned.
+
+```php
+interface PizzaBuilderInterface
+{
+  public function prepare();
+  public function applyToppings();
+  public function bake();
+}
+class PizzaBuilder
+{
+  public function make(PizzaBuilderInterface $pizza): Pizza 
+  {
+    $pizza->prepare();
+    $pizza->applyToppings();
+    $pizza->bake();
+    return $pizza;
+  }
 }
 ```
 
