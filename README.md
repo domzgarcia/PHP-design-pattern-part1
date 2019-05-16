@@ -270,6 +270,46 @@ Recurring themes:
 
 ### Writing Software is Hard
 #### Really Hard
+- Temporal Database.
+- Don't confuse simple with basic or easy.
+
+### Other
+- Unrelated Industries
+- The Laravel Userbase
+- Pro Bono Developer Evangelists
+- And the Haters (Your Cup of tea)
+
+### Theme # 1 - Care
+- PIXAR ~ Sand the underside of the drawers
+- Inception ~ 2:28 - 2:28 
+- Laravel Source ~ Comment is anti-tag
+- Prevent vague configuration
+- Mental Death, Make user-happiness your top priority, not adherence to a design pattern.
+- Be careful. Really smart people can offer really bad advice.
+```
+Sometimes I spend ridiculous amounts of time (hours) agonizing over making code "look pretty".
+I mean making things look symmetrical. I will actually rapidly scroll through an entire class to
+see if anything jumps out as not looking "pretty" or "clean"
+Am I wasting my time? Is there any value in this kind of behavior? Sometimes the functionality or
+design of the code won't even change, I'll just re-structure it so it looks nicer.
+Am I just being totally OCD or is there some benefit hidden in this?
+```
+The only truly dangerous thing is our ability to be disgracefully over-confident about things to which we barely understand.
+* Jerffey Way
+
+### Theme # 2 - Simplicity
+- Beatifully Simple APIs (put the user first)
+- Simple Natural Intuitive.
+`It is perhaps impossible to avoid being "patterns happy" on the road to learning patterns.` ~ Joshua Kerievsky (Refactoring to Patterns)
+- Guilty until proven innocent.
+
+### Theme # 3 - Distrust
+- Laravel Elixir ~ Agonizing over simplicity always pays off.
+
+# Code Purity 
+it means you can't have side effects. It only focus on the input and returns an output. nothing else.
+
+
 
 
 
