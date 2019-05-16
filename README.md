@@ -36,7 +36,7 @@ function view($view = null, $data = [], $mergeData = [])
 }
 ```
 
-Builder Pattern
+Builder Pattern (Manager Pattern)
 ---
 Builds complex obj step by step, it can return different obj based on the given data. Extension of Factory pattern.
 - Decouples code.
@@ -122,7 +122,130 @@ $pizzaBuilder = new PizzaBuilder;
 
 $pizzaOne = $pizzaBuilder->make(new MargarithaBuilder());
 $pizzaTwo = $pizzaBuilder->make(new ChickenBuilder());
+
+// # URL https://www.youtube.com/watch?v=mNl4cMLlplM
 ```
+Strategy Pattern
+---
+Defines a family of algorithms that are interchangeable. (if no bike, scooter, or any). Behavioral Pattern.
+Program to an interface, not an implemation. OPEN and CLOSE principle.
+
+```php
+interface DeliveryStrategy
+{ 
+  public function deliver(Address $address): DeliveryTime;
+}
+
+// # Calculate delivery time.
+class BikeDelivery implements DeliveryStrategy
+{
+  public function delivery(Address $address): DeliveryTime
+  {
+    $route = new BikeRoute($address);
+    echo $route->calculateCosts();
+    echo $route->calculateDeliveryTime();
+  }
+}
+// # So deliver the pizza now 
+class PizzaDelivery
+{ 
+  public function deliverPizza(DeliveryStrategy $strategy, Address $address)
+  {
+    return $strategy->deliver($address);
+  }
+}
+$address = new Address('Meer en vaart 300 1058 LE Amsterdam');
+$delivery = new PizzaDelivery();
+
+$delivery->deliver(new BikeDelivery(), $address);
+
+// # So adding new type of delivery
+class DroneDelivery implements DeliveryStrategy
+{
+  public function delivery(Address $address): DeliveryTime
+  {
+    $route = new DroneRoute($address);
+    echo $route->calculateCosts();
+    echo $route->calculateFlyTime();
+  }
+}
+
+// Multiple ways of sending pizza
+class PizzaDelivery
+{
+  public function deliverPizza(DeliveryStrategy $strategy, Address $address)
+  {
+    return $strategy->deliver($address);
+  }
+}
+
+$address = new Address('Meer en vaart 300 1058 LE Amsterdam');
+$delivery = new PizzaDelivery();
+
+$delivery->deliver(new BikeDelivery(), $address);
+$delivery->deliver(new DroneDelivery(), $address);
+
+// # In laravel strategy pattern used in Translation Locale.
+```
+Provider Pattern
+---
+Sets a pattern for providing some essential service
+Also interchangeable.
+
+```php
+
+// # Like how do it.
+
+class DominoServiceProvider extends ServiceProvider
+{
+  public function register()
+  {
+    // register your services here
+  }
+}
+
+use App\Dominos\PizzaManager;
+
+class PizzaServiceProvider extends ServiceProvider
+{
+  public function register()
+  {
+    $this->app->bind('pizza-manager', function ($app) {
+      return new PizzaManager();
+    });
+  }
+}
+
+// # Usage
+$pizzaManager = new \App\Dominos\PizzaManager();
+
+// Using container
+$pizzaManager = app('pizza-manager');
+
+$margaritha = $pizzaManager->driver('margaritha');
+$chicken = $pizzaManager->driver('chicken-pizza');
+
+// # Example in Laravel Provider Pattern
+
+class DebugServiceProvider extends ServiceProvider 
+{
+  public function register()
+  {
+    $this->app->singleton('debugbar', function ($app) {
+      $debugbar = new LaravelDebugbar($app);
+      
+      if($app->bound(SessionManager::class)) {
+        $sessionManager = $app->make(SessionManager::class);
+        $httpDriver = new SymfonyHttpDriver($sessionManager);
+        $debugbar->setHttpDriver($httpDriver);
+      } 
+      return $debugbar;
+    });
+  }
+}
+```
+
+
 
 
 
