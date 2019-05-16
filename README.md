@@ -22,3 +22,16 @@ class PizzaFactory implements PizzaFactoryContract
   }
 }
 ```
+In laravel
+```php
+function view($view = null, $data = [], $mergeData = [])
+{
+  $factory = app(ViewFactory::class);
+  if( func_num_args() === 0) {
+    return $factory;
+  }
+  return $factory->make($view, $data, $mergeData);
+}
+```
+
+
