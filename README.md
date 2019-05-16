@@ -1,6 +1,9 @@
 ### laravel-design-pattern
 Quick study of design patterns used in Laravel
 
+
+# Section 1 - By Bobby Bouwmann.
+
 Factory Pattern
 ---
 - provides an interface for creating obj with specifying their concrete classes.
@@ -123,8 +126,10 @@ $pizzaBuilder = new PizzaBuilder;
 $pizzaOne = $pizzaBuilder->make(new MargarithaBuilder());
 $pizzaTwo = $pizzaBuilder->make(new ChickenBuilder());
 
-// # URL https://www.youtube.com/watch?v=mNl4cMLlplM
+// # URL 
 ```
+[https://www.youtube.com/watch?v=mNl4cMLlplM](visit)
+
 Strategy Pattern
 ---
 Defines a family of algorithms that are interchangeable. (if no bike, scooter, or any). Behavioral Pattern.
@@ -244,6 +249,28 @@ class DebugServiceProvider extends ServiceProvider
   }
 }
 ```
+
+
+# Section 2 - By Jeffrey Way
+Things Laravel Made me Believe
+[https://www.youtube.com/watch?v=mDotS5BDqRM](visit)
+
+Recurring themes:
+- Care
+- Simplicity
+- Distrust
+
+### Things I Believe
+- What's Unimportant is Paramount ~ `The things we think don't matter, maybe matter the most`
+- Simple(r) Always Wins
+- API over Purity
+- Be Honest About Scope
+- Focus on the Fundamentals (Loud and clear)
+- Just Build Things
+
+### Writing Software is Hard
+#### Really Hard
+
 
 
 
